@@ -179,12 +179,13 @@ input[type="submit"],
 }
 
 .boton{
+    color: white !important;
     text-align: center;
     width: 130px;
 }
 
 .boton-verde{ 
-    background: green;
+    background:#24b824;
     border-color: #055b05;
 }
 

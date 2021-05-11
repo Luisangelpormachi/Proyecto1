@@ -10,6 +10,7 @@ require_once 'includes/helpers.php';
     
     $entrada_actual = conseguirCadaEntrada($conexion, $_GET['id']);
         
+
     if(!isset($entrada_actual['id'])){
         header("location: index.php");
     }
@@ -35,10 +36,16 @@ require_once 'includes/lateral.php';
     <a href="categoria.php?id=<?= $entrada_actual['categoria_id']?>">
         <h2><?=$entrada_actual['categoria']?></h2> 
     </a>
-    <h4><?=$entrada_actual['fecha']?></h4> 
+    <h4><?=$entrada_actual['fecha']?> | <?= $entrada_actual['usuario'] ?></h4> 
     <p><?=$entrada_actual['descripcion']?></p>   
 
-
+    <?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']['id'] == $entrada_actual['usuario_id']):?>
+        
+        </br>
+        <a href="crear-entradas.php" class="boton boton-verde" >Editar entradas</a>
+        <a href="crear-categoria.php" class="boton" >Eliminar entrada</a>
+        
+    <?php endif ;?>
 
 </div>
    
