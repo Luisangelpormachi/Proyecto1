@@ -42,8 +42,8 @@ require_once 'includes/lateral.php';
     <?php if(isset($_SESSION['usuario']) && $_SESSION['usuario']['id'] == $entrada_actual['usuario_id']):?>
         
         </br>
-        <a href="crear-entradas.php" class="boton boton-verde" >Editar entradas</a>
-        <a href="crear-categoria.php" class="boton" >Eliminar entrada</a>
+        <a href="editar-entrada.php?id=<?=$entrada_actual['id']?>" class="boton boton-verde" >Editar entradas</a>
+        <a href="borrar-entrada.php?id=<?=$entrada_actual['id']?>" class="boton" >Eliminar entrada</a>
         
     <?php endif ;?>
 

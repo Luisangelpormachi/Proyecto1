@@ -23,13 +23,30 @@ if(isset($_POST)){
     
     
     if(count($errores) == 0){
-        $sql = "INSERT INTO entradas VALUES(null, $usuario, $categoria , '$titulo', '$descripcion', CURDATE());";
+        if(isset($_GET['editar'])){
+
+            $entrada_id = $_GET['editar'];
+            $usuario_id = $_SESSION['usuario']['id'];
+        
+            $sql = "UPDATE entradas SET titulo = '$titulo', descripcion = '$descripcion', categoria_id = '$categoria' WHERE id = $entrada_id AND   usuario_id = $usuario_id";
+            
+
+        }else{
+            
+            $sql = "INSERT INTO entradas VALUES(null, $usuario, $categoria , '$titulo', '$descripcion', CURDATE());";
+
+        }
         $guardar = mysqli_query($conexion, $sql);
     
         header("location: index.php");    
       
     }else{
         $_SESSION['errores_entrada'] = $errores;
+
+        if(isset($_GET['editar']))  {
+            header("location: editar-entradas.php?id=".$_GET['editar']);
+        }
+
         header("location: crear-entradas.php");    
     }
 }
