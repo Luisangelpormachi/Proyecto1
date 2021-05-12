@@ -41,13 +41,16 @@ if(isset($_POST)){
         header("location: index.php");    
       
     }else{
+
         $_SESSION['errores_entrada'] = $errores;
 
         if(isset($_GET['editar']))  {
-            header("location: editar-entradas.php?id=".$_GET['editar']);
+            header("location: editar-entrada.php?id=".$_GET['editar']);
+        }else{
+
+            header("location: crear-entradas.php");    
         }
 
-        header("location: crear-entradas.php");    
     }
 }
 
