@@ -108,7 +108,18 @@
      return $resultado;
      }
 
-
+     function buscarEntradas($db, $busqueda){
+        $sql = "SELECT e.*, c.nombre AS 'categoria' FROM entradas e INNER JOIN categoria c ON e.categoria_id = c.id WHERE e.titulo LIKE '%$busqueda%' ORDER BY e.id ASC";
+        
+        $entradas = mysqli_query($db, $sql);
+        
+        
+        $resultado = array();
+        if($entradas && mysqli_num_rows($entradas) >= 1){
+             $resultado = $entradas;
+     }
+     return $entradas;
+     }
 
      
 
